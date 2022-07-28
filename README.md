@@ -1,12 +1,7 @@
-# Old Reddit Redirect
+# Teddit Redirect
 
-[Chrome extension](https://chrome.google.com/webstore/detail/old-reddit-redirect/dneaehbmnbhcippjikoajpoabadpodje)
 
-[Firefox extension](https://addons.mozilla.org/firefox/addon/old-reddit-redirect)
-
-Dislike Reddit's redesign? Old Reddit Redirect will ensure that you always load the old (old.reddit.com) design instead.
-
-Will force all reddit.com usage to old.reddit.com. Will work when navigating to the site, opening links, using old bookmarks. Works regardless of whether you are logged in or not, and in incognito mode.
+Redirects reddit to alternative free and open source frontend called [Teddit](https://codeberg.org/teddit/teddit)
 
 #### Redirected domains
 
@@ -22,4 +17,4 @@ Will force all reddit.com usage to old.reddit.com. Will work when navigating to 
 
 ## License
 
-Code copyright Tom Watson. Code released under [the MIT license](LICENSE.txt).
+Original code by [Tom Watson](https://github.com/tom-james-watson/old-reddit-redirect). This fork is licenced under the [AGPLv3](LICENSE.txt).

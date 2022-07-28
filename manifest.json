@@ -1,17 +1,25 @@
 {
-  "name": "Old Reddit Redirect",
-  "description": "Ensure Reddit always loads the old design",
+  "name": "Teddit Redirect",
+  "description": "Redirects to an open source and free frontend of reddit.",
   "version": "1.6.0",
   "manifest_version": 2,
-  "background": { "scripts": ["background.js"] },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
   "icons": {
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
   "content_scripts": [
     {
-      "matches": ["*://old.reddit.com/*"],
-      "css": ["styles.css"],
+      "js": [
+        "background.js"
+      ],
+      "matches": [
+        "*://teddit.net/*"
+      ],
       "run_at": "document_start"
     }
   ],
