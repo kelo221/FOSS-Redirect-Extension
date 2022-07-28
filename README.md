@@ -1,7 +1,7 @@
 # Teddit Redirect
 
 
-Redirects reddit to alternative free and open source frontend called [Teddit](https://codeberg.org/teddit/teddit)
+Redirects Reddit to alternative free and open source frontend called [Teddit](https://codeberg.org/teddit/teddit)
 
 #### Redirected domains
 
