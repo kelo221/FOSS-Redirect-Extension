@@ -1,5 +1,5 @@
 const tedditUrl = "https://teddit.net";
-const excludedPaths = [
+const redditExcludedPaths = [
     "/poll",
     "/rpan",
     "/settings",
@@ -8,10 +8,10 @@ const excludedPaths = [
 ];
 
 chrome.webRequest.onBeforeRequest.addListener(
-    function (details) {
+    details => {
         const url = new URL(details.url);
 
-        for (const path of excludedPaths) {
+        for (const path of redditExcludedPaths) {
             if (url.pathname.indexOf(path) === 0) return;
         }
 

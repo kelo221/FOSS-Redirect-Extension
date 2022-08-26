@@ -1,35 +1,17 @@
 {
-  "name": "Teddit Redirect",
+  "name": "FOSS redirector",
   "description": "Redirects to an open source and free frontend of reddit.",
   "version": "1.6.0",
   "manifest_version": 2,
-  "background": {
-    "scripts": [
-      "background.js"
-    ]
-  },
   "icons": {
+    "16": "img/icon16.png",
+    "24": "img/icon24.png",
+    "32": "img/icon32.png",
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
-  "content_scripts": [
-    {
-      "js": [
-        "background.js"
-      ],
-      "matches": [
-        "*://teddit.net/*"
-      ],
-      "run_at": "document_start"
-    }
-  ],
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "*://reddit.com/*",
-    "*://www.reddit.com/*",
-    "*://np.reddit.com/*",
-    "*://amp.reddit.com/*",
-    "*://i.reddit.com/*"
-  ]
+  "browser_action": {
+    "default_title": "Google Mail",
+    "default_popup": "settings.html"
+  }
 }
