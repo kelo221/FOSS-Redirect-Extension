@@ -6,74 +6,60 @@
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
+<style>
+.cursorHint{
+    cursor: pointer;
+}
+</style>
+<script src="fontAwesome.js"></script>
+<script src="alt.js"></script>
 <body>
 
-<script src=
-                './fontAwesome.js'>
-</script>
 
 <div class="container">
-    <div class="is-flex-direction-column">
-        <div class="p-2 bd-highlight
-               has-background-grey-lighter">
-               <span class="tag">
-                  <div class="control">
-                     <label class="radio">
-                     <input type="radio" name="foobar">
-                     On
-                     </label>
-                     <label class="radio">
-                     <input type="radio" name="foobar" checked>
-                     Off
-                     </label>
-                  </div>
-               </span>
 
-
-
-
-
-
-            Reddit<i class="fa-solid fa-arrow-right"></i>Teddit
+    <div class="p-2 has-background-success cursorHint" id="Reddit">
+        <div class="has-text-centered">
+            <div class="container">
+                        <span class="has-text-left has-text-white">
+                Reddit
+                </span>
+                <i id="RedditIcon" class="fa-solid fa-arrow-right has-text-white"></i>
+                <span class="has-text-right has-text-white">
+                Teddit
+                </span>
+            </div>
         </div>
-
-        <div class="p-2 bd-highlight
-               has-background-grey-lighter">
-               <span class="tag">
-                  <div class="control">
-                     <label class="radio">
-                     <input type="radio" name="foobar">
-                     On
-                     </label>
-                     <label class="radio">
-                     <input type="radio" name="foobar" checked>
-                     Off
-                     </label>
-                  </div>
-               </span>
-            Twitter<i class="fa-solid fa-arrow-right"></i>Nitter
-        </div>
-
-        <div class="p-2 bd-highlight
-               has-background-grey-lighter">
-               <span class="tag">
-                  <div class="control">
-                     <label class="radio">
-                     <input type="radio" name="foobar">
-                     On
-                     </label>
-                     <label class="radio">
-                     <input type="radio" name="foobar" checked>
-                     Off
-                     </label>
-                  </div>
-               </span>
-            Instagram<i class="fa-solid fa-arrow-right"></i>Bibliogram
-
-
-        </div>
-
     </div>
 
+    <div class="p-2 has-background-success cursorHint" id="Twitter">
+        <div class="has-text-centered">
+            <div class="container">
+                        <span class="has-text-left has-text-white">
+                Twitter
+                </span>
+                <i id="TwitterIcon"  class="fa-solid fa-arrow-right has-text-white"></i>
+                <span class="has-text-right has-text-white">
+                Nitter
+                </span>
+            </div>
+        </div>
+    </div>
+
+        <div class="p-2 has-background-success cursorHint" id="Instagram">
+                <div class="has-text-centered">
+                    <div class="container">
+                        <span class="has-text-left has-text-white">
+                Instagram
+                </span>
+                        <i id="InstagramIcon"  class="fa-solid fa-arrow-right has-text-white"></i>
+                        <span class="has-text-right has-text-white">
+                Bibliogram
+                </span>
+                    </div>
+                </div>
+        </div>
+    <p id="demo">
+    </div>
 </body>
 </html>
