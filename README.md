@@ -22,3 +22,5 @@ Redirects Reddit to alternative free and open source frontend called [Teddit](ht
 ## License
 
 Original code by [Tom Watson](https://github.com/tom-james-watson/old-reddit-redirect). This fork is licenced under the [AGPLv3](LICENSE.txt).
+
+Icons provided by [Icons8](https://icons8.com/).

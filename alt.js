@@ -1,45 +1,55 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
 
     const redditContainer = document.getElementById("Reddit")
     const twitterContainer = document.getElementById("Twitter")
-    const instagramContainer =  document.getElementById("Instagram")
+    const instagramContainer = document.getElementById("Instagram")
 
     const redditContainerIcon = document.getElementById("RedditIcon")
     const twitterContainerIcon = document.getElementById("TwitterIcon")
-    const instagramContainerIcon =  document.getElementById("InstagramIcon")
+    const instagramContainerIcon = document.getElementById("InstagramIcon")
 
     const toggledOn = "has-background-success"
     const toggledOff = "has-background-danger"
 
-    const arrowIcon = "fa-arrow-right"
-    const crossIcon = "fa-xmark"
+    const arrowIcon = "las la-angle-right"
+    const crossIcon = "la la-close"
+
 
     const toggleReddit = () => {
-        redditContainer.classList.toggle(toggledOff, redditContainer.classList.contains(toggledOn));
-        redditContainerIcon.classList.toggle(crossIcon, redditContainer.classList.contains(arrowIcon));
-        document.getElementById("demo").innerHTML = redditContainerIcon.className;
+
+        if (redditContainer.classList.contains(toggledOn)) {
+            redditContainer.className = "p-2 has-background-danger cursorHint";
+            redditContainerIcon.className = crossIcon
+        } else {
+            redditContainer.className = "p-2 has-background-success cursorHint";
+            redditContainerIcon.className = arrowIcon
+        }
+
+        //  document.getElementById("demo").innerHTML = redditContainerIcon.className;
     };
 
     const toggleTwitter = () => {
-        document.getElementById("demo").innerHTML = "Hello World";
+        if (twitterContainer.classList.contains(toggledOn)) {
+            twitterContainer.className = "p-2 has-background-danger cursorHint";
+            twitterContainerIcon.className = crossIcon
+        } else {
+            twitterContainer.className = "p-2 has-background-success cursorHint";
+            twitterContainerIcon.className = arrowIcon
+        }
     };
 
     const toggleInstagram = () => {
-        document.getElementById("demo").innerHTML = "Hello World";
+        if (instagramContainer.classList.contains(toggledOn)) {
+            instagramContainer.className = "p-2 has-background-danger cursorHint";
+            instagramContainerIcon.className = crossIcon
+        } else {
+            instagramContainer.className = "p-2 has-background-success cursorHint";
+            instagramContainerIcon.className = arrowIcon
+        }
     };
-
-
 
     redditContainer.addEventListener("click", toggleReddit);
     twitterContainer.addEventListener("click", toggleTwitter);
     instagramContainer.addEventListener("click", toggleInstagram);
 
-
-
-
-
 });
-
-
-
-
