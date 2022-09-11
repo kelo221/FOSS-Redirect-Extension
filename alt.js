@@ -1,4 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
+const port = chrome.runtime.connect({
+    name: "Saved Settings Handler"
+});
+
+let statusObject = [
+    {
+        enabled : undefined
+    },
+    {
+        enabled : undefined
+    },
+    {
+        enabled : undefined
+    },
+    {
+        enabled : undefined
+    },
+]
+
+const websiteEnum = {
+    instagram: 0,
+    reddit: 1,
+    twitter: 2,
+    youtube: 3
+}
+
+port.onMessage.addListener(function(msg) {
+    console.log("RECEIVED FROM BACKGROUND " + JSON.stringify(msg));
+    statusObject = msg
+
 
     const redditContainer = document.getElementById("Reddit")
     const twitterContainer = document.getElementById("Twitter")
@@ -11,53 +40,118 @@ document.addEventListener('DOMContentLoaded', function() {
     const youtubeContainerIcon = document.getElementById("YoutubeIcon")
 
     const toggledOn = "has-background-success"
-    const toggledOff = "has-background-danger"
 
     const arrowIcon = "las la-angle-right"
     const crossIcon = "la la-close"
 
+    const enabledClassName = "p-2 has-background-success cursorHint"
+    const disabledClassName = "p-2 has-background-danger cursorHint"
+
+
+    // Change UI to match saved settings
+    // TODO clean up if/else spaghetti
+
+    console.log(statusObject)
+
+    if (statusObject[websiteEnum.instagram].enabled){
+        instagramContainer.className = enabledClassName
+        instagramContainerIcon.className = arrowIcon
+        console.log(true)
+    } else {
+        instagramContainer.className = disabledClassName
+        instagramContainerIcon.className = crossIcon
+        console.log(false)
+    }
+
+    if (statusObject[websiteEnum.reddit].enabled){
+        redditContainer.className = enabledClassName
+        redditContainerIcon.className = arrowIcon
+        console.log(true)
+    } else {
+        redditContainer.className = disabledClassName
+        redditContainerIcon.className = crossIcon
+        console.log(false)
+    }
+
+    if (statusObject[websiteEnum.twitter].enabled){
+        twitterContainer.className = enabledClassName
+        twitterContainerIcon.className = arrowIcon
+        console.log(true)
+    } else {
+        twitterContainer.className = disabledClassName
+        twitterContainerIcon.className = crossIcon
+        console.log(false)
+    }
+
+    if (statusObject[websiteEnum.youtube].enabled){
+        youtubeContainer.className = enabledClassName
+        youtubeContainerIcon.className = arrowIcon
+        console.log(true)
+    } else {
+        youtubeContainer.className = disabledClassName
+        youtubeContainerIcon.className = crossIcon
+        console.log(false)
+    }
+
+
+
+
+    // Button Functionality
+    const toggleInstagram = () => {
+        if (instagramContainer.classList.contains(toggledOn)) {
+            instagramContainer.className = disabledClassName
+            instagramContainerIcon.className = crossIcon
+            statusObject[websiteEnum.instagram].enabled = false
+        } else {
+            instagramContainer.className = enabledClassName
+            instagramContainerIcon.className = arrowIcon
+            statusObject[websiteEnum.instagram].enabled = true
+        }
+        port.postMessage(statusObject);
+    };
 
     const toggleReddit = () => {
 
         if (redditContainer.classList.contains(toggledOn)) {
-            redditContainer.className = "p-2 has-background-danger cursorHint";
+            redditContainer.className = disabledClassName
             redditContainerIcon.className = crossIcon
+          statusObject[websiteEnum.reddit].enabled = false
         } else {
-            redditContainer.className = "p-2 has-background-success cursorHint";
+            redditContainer.className = enabledClassName
             redditContainerIcon.className = arrowIcon
+            statusObject[websiteEnum.reddit].enabled = true
         }
 
-        //  document.getElementById("demo").innerHTML = redditContainerIcon.className;
+        port.postMessage(statusObject);
+
     };
 
     const toggleTwitter = () => {
         if (twitterContainer.classList.contains(toggledOn)) {
-            twitterContainer.className = "p-2 has-background-danger cursorHint";
+            twitterContainer.className = disabledClassName
             twitterContainerIcon.className = crossIcon
+            statusObject[websiteEnum.twitter].enabled = false
         } else {
-            twitterContainer.className = "p-2 has-background-success cursorHint";
+            twitterContainer.className = enabledClassName
             twitterContainerIcon.className = arrowIcon
+            statusObject[websiteEnum.twitter].enabled = true
         }
+        port.postMessage(statusObject);
     };
 
-    const toggleInstagram = () => {
-        if (instagramContainer.classList.contains(toggledOn)) {
-            instagramContainer.className = "p-2 has-background-danger cursorHint";
-            instagramContainerIcon.className = crossIcon
-        } else {
-            instagramContainer.className = "p-2 has-background-success cursorHint";
-            instagramContainerIcon.className = arrowIcon
-        }
-    };
+
 
     const toggleYoutube = () => {
         if (youtubeContainer.classList.contains(toggledOn)) {
-            youtubeContainer.className = "p-2 has-background-danger cursorHint";
+            youtubeContainer.className = disabledClassName
             youtubeContainerIcon.className = crossIcon
+            statusObject[websiteEnum.youtube].enabled = false
         } else {
-            youtubeContainer.className = "p-2 has-background-success cursorHint";
+            youtubeContainer.className = enabledClassName
             youtubeContainerIcon.className = arrowIcon
+            statusObject[websiteEnum.youtube].enabled = true
         }
+        port.postMessage(statusObject);
     };
 
 
