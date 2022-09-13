@@ -7,11 +7,21 @@
     "storage",
     "webRequest",
     "webRequestBlocking",
+
     "*://reddit.com/*",
     "*://www.reddit.com/*",
     "*://np.reddit.com/*",
     "*://amp.reddit.com/*",
-    "*://i.reddit.com/*"
+    "*://i.reddit.com/*",
+    "*://old.reddit.com/*",
+    "*://www.old.reddit.com/*",
+
+    "*://www.youtube.com/*",
+    "*://www.twitter.com/*",
+    "*://twitter.com/*",
+    "*://www.instagram.com/*",
+    "*://instagram.com/*",
+    "*://youtube.com/*"
   ],
   "icons": {
     "16": "img/icon16.png",

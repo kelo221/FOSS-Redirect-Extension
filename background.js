@@ -1,31 +1,36 @@
 const tedditUrl = "https://teddit.net";
+const bibliogramUrl = "https://bibliogram.fdn.fr"
+const nitterUrl = "https://nitter.net"
+const invidiousUrl  = "https://yewtu.be"
 
 let statusObject = [
     {
-        enabled : true
+        enabled : false
     },
     {
-        enabled : true
+        enabled : false
     },
     {
-        enabled : true
+        enabled : false
     },
     {
-        enabled : true
+        enabled : false
     },
 ]
 
 const websiteEnum = {
-    reddit: 0,
-    twitter: 1,
-    instagram: 2,
+    instagram: 0,
+    reddit: 1,
+    twitter: 2,
     youtube: 3
 }
 
 // Get Stored JSON object
 const key = 'websiteSettings';
 chrome.storage.local.get([key], (result) => {
-    statusObject = result.websiteSettings.name ? result.websiteSettings.name : statusObject
+    if (result !== undefined) {
+        statusObject = result.websiteSettings.name
+    }
 });
 
 // Add listener for UI changes
@@ -35,11 +40,12 @@ chrome.runtime.onConnect.addListener(function(port) {
 
     // Receive new values from the UI
     port.onMessage.addListener(function(msg) {
+
+        if (typeof msg !== undefined)
         statusObject = msg
 
         // Store values in storage
         chrome.storage.local.set({key: msg}, () => {
-            console.log('Stored name: ' + value.name);
         });
     });
 })
@@ -48,7 +54,23 @@ chrome.webRequest.onBeforeRequest.addListener(
     details => {
         const url = new URL(details.url);
 
-        return {redirectUrl: tedditUrl + url.pathname + url.search + url.hash};
+
+        if (url.host.includes("reddit") && statusObject[websiteEnum.reddit].enabled){
+            return {redirectUrl: tedditUrl + url.pathname + url.search + url.hash};
+        }else
+
+        if (url.host.includes("twitter") && statusObject[websiteEnum.twitter].enabled){
+            return {redirectUrl: nitterUrl + url.pathname + url.search + url.hash};
+        }else
+
+        if (url.host.includes("instagram") && statusObject[websiteEnum.instagram].enabled){
+            return {redirectUrl: bibliogramUrl + url.pathname + url.search + url.hash};
+        }else
+
+        if (url.host.includes("youtube") && statusObject[websiteEnum.youtube].enabled){
+            return {redirectUrl: invidiousUrl + url.pathname + url.search + url.hash};
+        }
+
     },
     {
         urls: [
@@ -59,6 +81,13 @@ chrome.webRequest.onBeforeRequest.addListener(
             "*://np.reddit.com/*",
             "*://amp.reddit.com/*",
             "*://i.reddit.com/*",
+
+            "*://twitter.com/*",
+            "*://www.twitter.com/*",
+            "*://instagram.com/*",
+            "*://www.instagram.com/*",
+            "*://youtube.com/*",
+            "*://www.youtube.com/*",
         ],
         types: [
             "main_frame",

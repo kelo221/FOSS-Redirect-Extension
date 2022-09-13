@@ -25,7 +25,6 @@ const websiteEnum = {
 }
 
 port.onMessage.addListener(function(msg) {
-    console.log("RECEIVED FROM BACKGROUND " + JSON.stringify(msg));
     statusObject = msg
 
 
@@ -48,55 +47,49 @@ port.onMessage.addListener(function(msg) {
     const disabledClassName = "p-2 has-background-danger cursorHint"
 
 
-    // Change UI to match saved settings
-    // TODO clean up if/else spaghetti
-
-    console.log(statusObject)
-
+/*
     if (statusObject[websiteEnum.instagram].enabled){
         instagramContainer.className = enabledClassName
         instagramContainerIcon.className = arrowIcon
-        console.log(true)
     } else {
         instagramContainer.className = disabledClassName
         instagramContainerIcon.className = crossIcon
-        console.log(false)
     }
+*/
 
     if (statusObject[websiteEnum.reddit].enabled){
         redditContainer.className = enabledClassName
         redditContainerIcon.className = arrowIcon
-        console.log(true)
     } else {
         redditContainer.className = disabledClassName
         redditContainerIcon.className = crossIcon
-        console.log(false)
     }
 
     if (statusObject[websiteEnum.twitter].enabled){
         twitterContainer.className = enabledClassName
         twitterContainerIcon.className = arrowIcon
-        console.log(true)
     } else {
         twitterContainer.className = disabledClassName
         twitterContainerIcon.className = crossIcon
-        console.log(false)
     }
 
     if (statusObject[websiteEnum.youtube].enabled){
         youtubeContainer.className = enabledClassName
         youtubeContainerIcon.className = arrowIcon
-        console.log(true)
     } else {
         youtubeContainer.className = disabledClassName
         youtubeContainerIcon.className = crossIcon
-        console.log(false)
     }
 
 
 
 
     // Button Functionality
+
+
+/*
+    // Currently Bibliogram has been discontinued.
+    // https://cadence.moe/blog/2022-09-01-discontinuing-bibliogram
     const toggleInstagram = () => {
         if (instagramContainer.classList.contains(toggledOn)) {
             instagramContainer.className = disabledClassName
@@ -109,6 +102,7 @@ port.onMessage.addListener(function(msg) {
         }
         port.postMessage(statusObject);
     };
+*/
 
     const toggleReddit = () => {
 
@@ -157,7 +151,7 @@ port.onMessage.addListener(function(msg) {
 
     redditContainer.addEventListener("click", toggleReddit);
     twitterContainer.addEventListener("click", toggleTwitter);
-    instagramContainer.addEventListener("click", toggleInstagram);
+   // instagramContainer.addEventListener("click", toggleInstagram);
     youtubeContainer.addEventListener("click", toggleYoutube);
 
 })
