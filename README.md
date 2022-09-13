@@ -1,4 +1,4 @@
-# Teddit Redirect
+# FOSS Redirect
 
 Firefox Extension (old):
 https://addons.mozilla.org/en-GB/firefox/addon/teddit-redirect/
