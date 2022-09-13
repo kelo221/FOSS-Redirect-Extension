@@ -1,23 +1,12 @@
 # Teddit Redirect
 
-Firefox Extension:
+Firefox Extension (old):
 https://addons.mozilla.org/en-GB/firefox/addon/teddit-redirect/
 
 For Blink browsers you need to manually install the unpacked extension.
 
-Redirects Reddit to alternative free and open source frontend called [Teddit](https://codeberg.org/teddit/teddit)
-
-#### Redirected domains
-
-- `reddit.com`
-- `www.reddit.com`
-- `np.reddit.com`
-- `amp.reddit.com`
-- `i.reddit.com`
-
-#### Whitelisted domains
-
-- `new.reddit.com`
+Redirects various sites to their alternative free and open source frontends.
+For example Reddit will be redirected to [Teddit](https://codeberg.org/teddit/teddit)
 
 ## License
 
