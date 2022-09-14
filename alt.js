@@ -25,7 +25,12 @@ const websiteEnum = {
 }
 
 port.onMessage.addListener(function(msg) {
-    statusObject = msg
+
+    try {
+        statusObject = (JSON.parse(msg))
+    }catch (e){
+        statusObject = msg
+    }
 
 
     const redditContainer = document.getElementById("Reddit")
@@ -115,7 +120,6 @@ port.onMessage.addListener(function(msg) {
             redditContainerIcon.className = arrowIcon
             statusObject[websiteEnum.reddit].enabled = true
         }
-
         port.postMessage(statusObject);
 
     };
