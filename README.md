@@ -1,7 +1,7 @@
 # FOSS Redirect
 
-Firefox Extension (old):
-https://addons.mozilla.org/en-GB/firefox/addon/teddit-redirect/
+Firefox Extension:
+https://addons.mozilla.org/en-GB/firefox/addon/foss-redirect/
 
 For Blink browsers you need to manually install the unpacked extension.
 
