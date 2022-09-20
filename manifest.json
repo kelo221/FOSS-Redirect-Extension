@@ -1,7 +1,7 @@
 {
   "name": "FOSS redirector",
   "description": "Redirects to an open source versions of chosen websites.",
-  "version": "1.0",
+  "version": "1.2",
   "manifest_version": 2,
   "permissions": [
     "storage",

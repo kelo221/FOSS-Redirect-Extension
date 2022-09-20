@@ -26,11 +26,8 @@ const websiteEnum = {
 
 port.onMessage.addListener(function(msg) {
 
-    try {
-        statusObject = (JSON.parse(msg))
-    }catch (e){
         statusObject = msg
-    }
+
 
 
     const redditContainer = document.getElementById("Reddit")

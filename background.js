@@ -34,23 +34,25 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 })
 
+// Load Stored settings after the browser is opened
+chrome.runtime.onStartup.addListener(function() {
+    chrome.storage.local.get(["storedSettings"], (result) => {
+        if (chrome.runtime.lastError){
+            console.log('Error getting');
+        }else if(result) {
+            statusObject = JSON.parse(result.storedSettings)
+        }
+    });
+})
+
 // Add listener for UI changes
 chrome.runtime.onConnect.addListener(port => {
 
 
-
-    chrome.storage.local.get(["storedSettings"], (result) => {
-        if (chrome.runtime.lastError)
-            console.log('Error getting');
-        statusObject = result.storedSettings
-    });
-
         // Receive new values from the UI
         port.onMessage.addListener(msg => {
-            console.log("DATA FROM THE UI!")
-            statusObject = JSON.stringify(msg)
-
-            chrome.storage.local.set({storedSettings: statusObject}, () => {
+            statusObject = msg
+            chrome.storage.local.set({storedSettings: JSON.stringify(statusObject)}, () => {
                 if (chrome.runtime.lastError)
                     console.log('Error setting');
             });
@@ -64,35 +66,26 @@ chrome.runtime.onConnect.addListener(port => {
 chrome.webRequest.onBeforeRequest.addListener(
     details => {
         const url = new URL(details.url);
-        let parsedObject
 
-        try {
-            parsedObject = (JSON.parse(statusObject))
-        }catch (e){
-            parsedObject = statusObject
-        }
-
-
-
-        if (url.host.includes("reddit") && parsedObject[websiteEnum.reddit].enabled) {
+        if (url.host.includes("reddit") && statusObject[websiteEnum.reddit].enabled) {
             return {
                 redirectUrl: tedditUrl + url.pathname + url.search + url.hash
             };
         } else
 
-        if (url.host.includes("twitter") && parsedObject[websiteEnum.twitter].enabled) {
+        if (url.host.includes("twitter") && statusObject[websiteEnum.twitter].enabled) {
             return {
                 redirectUrl: nitterUrl + url.pathname + url.search + url.hash
             };
         } else
 
-        if (url.host.includes("instagram") && parsedObject[websiteEnum.instagram].enabled) {
+        if (url.host.includes("instagram") && statusObject[websiteEnum.instagram].enabled) {
             return {
                 redirectUrl: bibliogramUrl + url.pathname + url.search + url.hash
             };
         } else
 
-        if (url.host.includes("youtube") && parsedObject[websiteEnum.youtube].enabled) {
+        if (url.host.includes("youtube") && statusObject[websiteEnum.youtube].enabled) {
             return {
                 redirectUrl: invidiousUrl + url.pathname + url.search + url.hash
             };
